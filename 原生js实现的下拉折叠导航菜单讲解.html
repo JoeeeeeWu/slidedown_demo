@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>原生js实现的下拉折叠导航菜单讲解</title>
+	<style>
+		*{
+			margin: 0  auto;
+			padding: 0;
+		}
+		ul{
+			margin: 0;
+			padding: 0;
+			width: 150px;
+		}
+		li{
+			list-style: none;
+			margin: 0;
+			padding: 0
+		}
+		.leftSidebar{
+			margin: 0 auto;
+			width: 500px;
+		}
+		.lmName{
+			display: block;
+			width: 150px;
+			background-color: #f9f9f9;
+			height: 30px;
+			line-height: 30px;
+			border: solid #e5e5e5 1px;
+            padding-left: 15px;
+		}
+		.ejlmUI{
+			display: none;
+			width: 165px;
+			border: solid #e5e5e5 1px;
+		}
+		.ejlmUI li{
+			border-bottom: dashed #e5e5e5 1px;
+			padding-left: 15px;
+			font-size: 12px;
+			line-height: 24px;
+		}
+		.action{
+			display: block;
+		}
+	</style>
+	<script>
+	    var ejlmUI=document.getElementsByClassName('ejlmUI');
+		function left(){
+			var lmName=document.getElementsByClassName('lmName');
+			for(var index=0;index<lmName.length;index++){
+				lmName[index].index=index;
+				lmName[index].onclick=function(){
+					allNone();
+					ejlmUI[this.index].style.display="block";
+				}
+			}
+		}
+
+		function allNone(){
+
+             for (var index = 0; index < ejlmUI.length; index++) {
+             	ejlmUI[index].style.display="none";
+             }
+		}
+
+		window.onload=function(){
+			left();
+		}
+	</script>
+</head>
+<body>
+	<div class="leftSidebar">
+		<ul id="leftUI">
+			<li>
+				<a href="javascript:void(0);" class="lmName">蚂蚁部落一</a>
+				<ul class="ejlmUI action">
+					<li class="ejlm">栏目11</li>
+					<li class="ejlm">栏目11</li>
+					<li class="ejlm">栏目11</li>
+					<li class="ejlm">栏目11</li>
+				</ul>
+			</li>
+			<li>
+				<a href="javascript:void(0);" class="lmName">蚂蚁部落二</a>
+				<ul class="ejlmUI">
+					<li class="ejlm">栏目22</li>
+					<li class="ejlm">栏目22</li>
+					<li class="ejlm">栏目22</li>
+					<li class="ejlm">栏目22</li>
+				</ul>
+			</li>
+			<li>
+				<a href="javascript:void(0);" class="lmName">蚂蚁部落三</a>
+				<ul class="ejlmUI">
+					<li class="ejlm">栏目33</li>
+					<li class="ejlm">栏目33</li>
+					<li class="ejlm">栏目33</li>
+					<li class="ejlm">栏目33</li>
+				</ul>
+			</li>
+		</ul>
+	</div>
+</body>
+</html>
